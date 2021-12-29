@@ -112,3 +112,40 @@ give_me_one()
 help(give_me_one)
 
 # %%
+def run(fun_):
+    return fun_()
+run(give_me_one)
+# %%
+def do_sum(x, y):
+    print(x + y)
+def run_fun(fun_, x, y):
+    fun_(x, y)
+run_fun(do_sum, 3, 5)
+
+# %%
+def add_up(*args):
+    return sum(args)
+def run_with_args(fun_, *args):
+    return fun_(*args)
+run_with_args(add_up, 1, 2, 3)
+# %%
+def reminder(*args):
+    print(f'This is what I must do:')
+    def print_task(t):
+        print(f'do {t}')
+        print(f'-------------')
+    for a in args:
+        print_task(a)
+reminder('homework', 'cleaning', 'tidying up')
+# %%
+def task_reminder(task):
+    print(f'Generating specialized task printer ...')
+    def task_printer():
+        print(f'do {task}')
+    return task_printer
+specialized_homework_printer = task_reminder('homework')
+specialized_cleaning_printer = task_reminder('cleaning')
+# %%
+specialized_homework_printer()
+specialized_cleaning_printer()
+# %%
