@@ -1,27 +1,8 @@
-# Instructions  
+# Functions
 
-  ** this file should contain student lesson instructions **
+### Define
 
-  _ students will see these instructions in a read-only workspace tab _
+Although Python is not _stricto sensu_ a functional language, functions play an important role in it. Functions are pieces of code that take an input and return an output. They are _defined_ once and _invoked_ typically more than once.
 
-  ## Steps
-  1. 
-  2. 
-  3. 
+Definition of a function requires the keyword `def` and the `:`.
 
-  Use [Markdown](https://gist.github.com/cuonggt/9b7d08a597b167299f0d) to format your instructions.
-
-  For example, here is a code block in python3
-```python
-def hello_world():
-  print("hello world!")
-```
-
-
-  Include an image by placing it in the `assets` folder.
-
-  For example, here is the Replit logo:
-
-  ![alt text](assets/logo.png)
-  
-  
