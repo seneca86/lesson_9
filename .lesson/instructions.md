@@ -168,3 +168,41 @@ def clothes_size(hat='L', **kwargs):
 clothes_size(socks='M', hat='M')
 ```
 
+### Keyword-only arguments
+
+Python let's you specify keyword-only arguments by placing a `*` after the positional arguments and before the obligatorily-named arguments.
+
+```python
+def naming(one, *, two):
+    print(f'{one} are positional')
+    print(f'{two} must be named')
+naming(('this', 'that'), two='keyword-only')
+```
+
+### Alter mutable arguments
+
+Remember that mutable variables can be changed by a function even without explicitly returning anything.
+
+```python
+def alter(l1):
+    l1[0] = 'Beware'
+l2 = ['Ignore', 'the', 'risk']
+alter(l2)
+print(l2)
+```
+
+### Docstrings
+
+Docstrings are string that provide information on a function. They can be invoked with the `help()` function. Docstrings are enclosed by triple quotes.
+
+```python
+def give_me_one():
+    """
+    Returns a one. This function is:
+    - Useless
+    - Just for illustrative purposes
+    """
+    return 1
+give_me_one()
+help(give_me_one)
+```

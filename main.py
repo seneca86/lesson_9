@@ -90,3 +90,25 @@ def clothes_size(hat='L', **kwargs):
         print(f'I will buy {key} of size {value}')
 clothes_size(socks='M', hat='M')
 # %%
+def naming(one, *, two):
+    print(f'{one} are positional')
+    print(f'{two} must be named')
+naming(('this', 'that'), two='keyword-only')
+# %%
+def alter(l1):
+    l1[0] = 'Beware'
+l2 = ['Ignore', 'the', 'risk']
+alter(l2)
+print(l2)
+# %%
+def give_me_one():
+    """
+    Returns a one. This function is:
+    - Useless
+    - Just for illustrative purposes
+    """
+    return 1
+give_me_one()
+help(give_me_one)
+
+# %%
