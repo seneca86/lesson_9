@@ -279,3 +279,27 @@ specialized_cleaning_printer()
 ```
 
 ## Lambda functions
+
+Lambda functions are anonymous functions expressed as a single statement, that are typically use to replace tiny functions.
+
+For instance, the following function is so short it is a candidate for becoming a lambda function.
+
+```python
+def capitalize(word):
+    return word.upper() + '!?'
+capitalize('what')
+```
+
+If we pass it as an argument for another function, we can even define it within the call.
+
+```python
+def shout(sentence, fun_):
+    for word in sentence:
+        print(fun_(word))
+shout('what is this', capitalize)
+```
+
+```python
+shout('what is this', lambda x: x.upper() + '!?')
+```
+

@@ -149,3 +149,15 @@ specialized_cleaning_printer = task_reminder('cleaning')
 specialized_homework_printer()
 specialized_cleaning_printer()
 # %%
+def capitalize(word):
+    return word.upper() + '!?'
+capitalize('what')
+# %%
+def shout(sentence, fun_):
+    for word in sentence:
+        print(fun_(word))
+shout('what is this', capitalize)
+# %%
+shout('what is this', lambda x: x.upper() + '!?')
+
+# %%
