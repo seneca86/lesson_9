@@ -35,12 +35,58 @@ print(what_to_do)
 # %%
 def check_nones(what):
     if what is None:
-        print('this is None')
+        print(f'{what} is None')
     elif what:
-        print('this is something')
+        print(f'{what} is something')
     else:
-        print('this is False')
+        print(f'{what} is False')
 check_nones(None)
 check_nones(42)
 check_nones(False)
+check_nones('')
+check_nones([])
+# %%
+def tale(papa, mama, baby, goldilocks):
+    print(f'{papa}, {mama}, and {baby}, found out {goldilocks} had eaten their meal')
+tale('a big bear', 'a mid bear', 'a small bear', 'a little girl')
+tale('a little girl', 'a small bear', 'a mid bear', 'a big bear')
+tale(
+    goldilocks='a little girl',
+    baby='a small bear',
+    mama='a mid bear',
+    papa='a big bear'
+    )
+# %%
+def clinical(height=1.90, weight=82):
+    print(f'My height is {height} m and my weight is {weight} kg')
+clinical()
+clinical(1.80)
+clinical(1.80, 90)
+clinical(weight=100)
+# %%
+def garbage_accumulator(garbage, accumulator=[]):
+    accumulator.append(garbage)
+    return accumulator
+garbage_accumulator('one') 
+garbage_accumulator('one') 
+# %%
+def shopping(must_have, nice_to_have, *args):
+    print(f'I need to buy {must_have} and probably {nice_to_have}')
+    print(f'I may also need {args}')
+shopping('milk', 'cereals', 'bread')
+# %%
+args = ('bread', 'olive oil')
+shopping('milk', 'cereals', *args)
+shopping('milk', 'cereals', args)
+# %%
+def clothes(**kwargs):
+    print(f'I will buy {kwargs}')
+kwargs = {'shirt': 'M', 'jeans':34}
+clothes(socks='M')
+clothes(socks='M', **kwargs)
+# %%
+def clothes_size(hat='L', **kwargs):
+    for key, value in kwargs.items():
+        print(f'I will buy {key} of size {value}')
+clothes_size(socks='M', hat='M')
 # %%
