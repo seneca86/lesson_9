@@ -303,3 +303,8 @@ shout('what is this', capitalize)
 shout('what is this', lambda x: x.upper() + '!?')
 ```
 
+## Generators
+
+A generator is a Python sequence creation object, which allows to iterate through sequences of data with no need to create and store the sequence in memory.
+
+We have already used `range()`, which is a generator (in older versions of Python it generated a list).
