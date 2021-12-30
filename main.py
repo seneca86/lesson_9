@@ -225,3 +225,42 @@ def compound(r, n, t):
     return (1 + r/n)**(n*t)
 compound(r=0.05, n=4, t=10)
 # %%
+planck = 6.62e-34
+def print_universal():
+    print(f'What we see inside the function is {planck=}')
+print_universal()
+# %%
+planck = 6.62e-34
+def print_universal():
+    # print(f'Try to access the variable AND change it {planck=}') # This fails
+    planck = 42
+print_universal()
+planck
+# %%
+planck = 6.62e-34
+def print_universal():
+    planck = 42
+    print(f'What we see inside the function is {planck=} with {id(planck)=}')
+print_universal()
+planck
+id(planck)
+# %%
+planck = 6.62e-34
+def print_universal():
+    global planck
+    planck = 42
+    print(f'What we see inside the function is {planck=} with {id(planck)=}')
+print_universal()
+print(f'What we see outside the function is {planck=} with {id(planck)=}')
+# %%
+planck = 6.62e-34
+def print_universal():
+    global planck
+    planck = 42
+    internal = 1
+    print(locals())
+    print(f'What we see inside the function is {planck=} with {id(planck)=}')
+print_universal()
+print(f'What we see outside the function is {planck=} with {id(planck)=}')
+print(globals())
+# %%

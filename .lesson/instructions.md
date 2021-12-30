@@ -408,3 +408,72 @@ compound(r=0.05, n=4, t=10)
 
 ## Namespaces and scope
 
+A namespace is a section within which a particular name is unique and unrelated to the same name in other namespaces. Each function defines its own namespace, but the walls can be breached. The main part of a program defines the _global_ namespace, in which the variables are global.
+
+A function can read but not change the value of global variables.
+
+```python
+planck = 6.62e-34
+def print_universal():
+    print(f'What we see inside the function is {planck=}')
+print_universal()
+```
+
+This will not work:
+
+```python
+planck = 6.62e-34
+def print_universal():
+    print(f'Try to access the variable AND change it {planck=}')
+    planck = 42
+print_universal()
+```
+
+We can indeed change the value of the variable inside the function, but it will not permeate outside it.
+
+```python
+planck = 6.62e-34
+def print_universal():
+    planck = 42
+print_universal()
+planck
+```
+
+We can check this with the `id()` command.
+
+```python
+planck = 6.62e-34
+def print_universal():
+    planck = 42
+    print(f'What we see inside the function is {planck=} with {id(planck)=}')
+print_universal()
+planck
+id(planck)
+```
+
+If we really want to _access_ __and__ _change_ a global variable, we need to use the `global` keyword.
+
+```python
+planck = 6.62e-34
+def print_universal():
+    global planck
+    planck = 42
+    print(f'What we see inside the function is {planck=} with {id(planck)=}')
+print_universal()
+print(f'What we see outside the function is {planck=} with {id(planck)=}')
+```
+
+The functions `globals()` and `locals()` return a dictionary of the contents of the local and global namespace, respectively.
+
+```python
+planck = 6.62e-34
+def print_universal():
+    global planck
+    planck = 42
+    internal = 1
+    print(locals())
+    print(f'What we see inside the function is {planck=} with {id(planck)=}')
+print_universal()
+print(f'What we see outside the function is {planck=} with {id(planck)=}')
+print(globals())
+```
