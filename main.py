@@ -264,3 +264,59 @@ print_universal()
 print(f'What we see outside the function is {planck=} with {id(planck)=}')
 print(globals())
 # %%
+def dummy():
+    '''
+    Just a dummy function
+    '''
+    print(f'My name is: {dummy.__name__}')
+    print(f'My docstring says: {dummy.__doc__}')
+dummy()
+# %%
+def infinite():
+    return infinite() # This will be trouble
+infinite()
+# %%
+animals = ('dog', 'cat', ('pig', 'sheep', 'hen'), ('gorilla', ('monkey', 'baboon')))
+# %%
+def flatten(t1):
+    for i in t1:
+        print(f'Flattening {i} ...')
+        if type(i) == tuple:
+            for j in flatten(i):
+                yield j
+        else:
+            print(f'nothing to flatten \n')
+            yield i
+tuple(flatten(animals))
+# %%
+def flatten(t1):
+    for i in t1:
+        print(f'Flattening {i} ...')
+        if type(i) == tuple:
+            yield from flatten(i)
+        else:
+            print(f'nothing to flatten \n')
+            yield i
+tuple(flatten(animals))
+# %%
+five_good_emperors = ('Nerva', 'Trajan', 'Hadrian', 'Antoninus', 'Marcus Aurelius')
+position = 5
+# five_good_emperors[position] # This will fail
+try:
+    five_good_emperors[position]
+except:
+    print(f'there were only {len(five_good_emperors)} good emperors, and you asked for the {position}th')
+# %%
+while True:
+    value=input('Please provide the desired position, or press q to quit')
+    if value == 'q':
+        break
+    try:
+        position=int(value)
+        print(five_good_emperors[position])
+    except IndexError as error:
+        print('Wrong index:', error)
+    except Exception as error:
+        print('Something else went wrong:', error)
+
+# %%

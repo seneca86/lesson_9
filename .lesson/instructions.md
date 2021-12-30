@@ -477,3 +477,89 @@ print_universal()
 print(f'What we see outside the function is {planck=} with {id(planck)=}')
 print(globals())
 ```
+
+### Uses of _ and __
+
+Names that begin and end with a double underscore (also called _dunder_) are reserved for internal use of the developers of the Python language. For instance, `__name__` and `__doc__` provide the name and documentation of a function, respectively.
+
+```python
+def dummy():
+    '''
+    Just a dummy function
+    '''
+    print(f'My name is: {dummy.__name__}')
+    print(f'My docstring says: {dummy.__doc__}')
+dummy()
+```
+
+## Recursion
+
+_Recursion_ is the act of a function calling itself. One consequence of recursion is that you may end up in an infinite loop.
+
+```python
+def infinite():
+    return infinite() # This will be trouble
+infinite()
+```
+
+Recursion is particulary useful when dealing with tuples/lists of tuples/lists that we want to "flatten".
+
+```python
+def flatten(t1):
+    for i in t1:
+        print(f'Flattening {i} ...')
+        if type(i) == tuple:
+            for j in flatten(i):
+                yield j
+        else:
+            print(f'nothing to flatten \n')
+            yield i
+tuple(flatten(animals))
+```
+
+Using `yield` instead of `return` means that we are writing a generator function. Additionally, there is a shortcut called `yield from` that reduces verbosity a bit:
+
+```python
+def flatten(t1):
+    for i in t1:
+        print(f'Flattening {i} ...')
+        if type(i) == tuple:
+            yield from flatten(i)
+        else:
+            print(f'nothing to flatten \n')
+            yield i
+tuple(flatten(animals))
+```
+
+## Exceptions
+
+An exception is a piece of code that is executed when an error occurs. We can anticipate errors and shut down our programs gracefully by using _exception handling_.
+
+If we try to access a non-existent element of a list, Python will fail. Let's see how to anticipate this situation.
+
+```python
+five_good_emperors = ('Nerva', 'Trajan', 'Hadrian', 'Antoninus', 'Marcus Aurelius')
+position = 5
+# five_good_emperors[position] # This will fail
+try:
+    five_good_emperors[position]
+except:
+    print(f'there were only {len(five_good_emperors)} good emperors, and you asked for the {position}th')
+```
+
+If we anticipate different types of exceptions happenning, we can provide separate treatments for each with the `except exceptiontype as name` form.
+
+```python
+while True:
+    value=input('Please provide the desired position, or press q to quit')
+    if value == 'q':
+        break
+    try:
+        position=int(value)
+        print(five_good_emperors[position])
+    except IndexError as error:
+        print('Wrong index:', error)
+    except Exception as error:
+        print('Something else went wrong:', error)
+```
+
