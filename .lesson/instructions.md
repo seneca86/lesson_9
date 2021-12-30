@@ -305,6 +305,45 @@ shout('what is this', lambda x: x.upper() + '!?')
 
 ## Generators
 
+### Definition
+
 A generator is a Python sequence creation object, which allows to iterate through sequences of data with no need to create and store the sequence in memory.
 
 We have already used `range()`, which is a generator (in older versions of Python it generated a list).
+
+```python
+sum(range(0, 10))
+for i in range(5):
+    print(i)
+```
+
+You may think of a generators as a function that keeps track of where it was the last time it was called, and starts from there. Once the generator runs its course, though, it becomes tapped out as we will see in the examples. 
+
+### Generator functions
+
+A generator function is a normal function that returns a generator object over which we can iterate. The only difference with a regular function is the use of `yield` instead of `return`. 
+
+```python
+def produce_generator(begin, end, step):
+    n = begin
+    while n < end:
+        yield n
+        n += step
+type(produce_generator)
+```
+
+```python
+gen_ = produce_generator(begin=10, end=20, step=2)
+for i in gen_:
+    print(i)
+```
+
+A generator can only be run once, meaning that we cannot restart a generator, that is why it has "memory". The generator in the example has become exhausted.
+
+```python
+for i in gen_:
+    print(i)
+```
+
+### Generator comprehensions
+

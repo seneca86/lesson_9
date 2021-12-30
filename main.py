@@ -161,3 +161,28 @@ shout('what is this', capitalize)
 shout('what is this', lambda x: x.upper() + '!?')
 
 # %%
+sum(range(0, 10))
+for i in range(5):
+    print(i)
+# %%
+g = range(10)
+for i in g:
+    print(i)
+    if i==5:
+        break
+next(g)
+# %%
+def produce_generator(begin, end, step):
+    n = begin
+    while n < end:
+        yield n
+        n += step
+type(produce_generator)
+# %%
+gen_ = produce_generator(begin=10, end=20, step=2)
+for i in gen_:
+    print(i)
+# %%
+for i in gen_:
+    print(i)
+# %%
