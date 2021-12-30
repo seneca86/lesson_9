@@ -347,3 +347,64 @@ for i in gen_:
 
 ### Generator comprehensions
 
+A generator comprehension is similar to a list or dictionary comprehension, but is surrounded by parentheses and returns a generator object. You may think of it as a shorthand of a generator function that does the _yield_ invisibly.
+
+```python
+mini_gen = (x**2 for x in [1, 2, 3])
+mini_gen
+for i in mini_gen:
+    print(i)
+```
+
+## Decorators
+
+Decorators are functions that take one function as input and return another function, modifying it without changing its source code.
+
+```python
+def decorator_(fun_):
+    def verbose(*args, **kwargs):
+        print('This is an improved function')
+        print('Positional arguments are ', args)
+        print('Keyword arguments are ', kwargs)
+        output = fun_(*args, **kwargs)
+        print('The output is ', output)
+        return output
+    return verbose
+
+def simple_fun(r, n):
+    return (1 + r)**n
+
+simple_fun(0.05, 10)
+nicer_fun = decorator_(simple_fun)
+nicer_fun(0.05, 10)
+```
+
+In the example above, when we pass the function to the decorator we obtain a new function that includes some additional statements.
+
+A shortcut for this is to use the syntax `@decorator` right before the function we want to decorate.
+
+```python
+@decorator_
+def compound(r, n, t):
+    return (1 + r/n)**(n*t)
+compound(r=0.05, n=4, t=10)
+```
+
+We can add several decorators to a function. The ones closer to the function are the ones executed first.
+
+```python
+def pretty_print(fun_):
+    def five_digits(*args, **kwargs):
+        output = fun_(*args, **kwargs)
+        return f'{output:.5}'
+    return five_digits
+
+@pretty_print
+@decorator_
+def compound(r, n, t):
+    return (1 + r/n)**(n*t)
+compound(r=0.05, n=4, t=10)
+```
+
+## Namespaces and scope
+

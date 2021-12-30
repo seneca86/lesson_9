@@ -186,3 +186,42 @@ for i in gen_:
 for i in gen_:
     print(i)
 # %%
+mini_gen = (x**2 for x in [1, 2, 3])
+mini_gen
+for i in mini_gen:
+    print(i)
+# %%
+def decorator_(fun_):
+    def verbose(*args, **kwargs):
+        print('This is an improved function')
+        print('Positional arguments are ', args)
+        print('Keyword arguments are ', kwargs)
+        output = fun_(*args, **kwargs)
+        print('The output is ', output)
+        return output
+    return verbose
+
+def simple_fun(r, n):
+    return (1 + r)**n
+
+simple_fun(0.05, 10)
+nicer_fun = decorator_(simple_fun)
+nicer_fun(0.05, 10)
+# %%
+@decorator_
+def compound(r, n, t):
+    return (1 + r/n)**(n*t)
+compound(r=0.05, n=4, t=10)
+# %%
+def pretty_print(fun_):
+    def five_digits(*args, **kwargs):
+        output = fun_(*args, **kwargs)
+        return f'{output:.5}'
+    return five_digits
+
+@pretty_print
+@decorator_
+def compound(r, n, t):
+    return (1 + r/n)**(n*t)
+compound(r=0.05, n=4, t=10)
+# %%
