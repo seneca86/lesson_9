@@ -492,6 +492,8 @@ def dummy():
 dummy()
 ```
 
+A single leading underscore is used to indicate that a variable is private, i.e. that it is not intended for external use. A single trailing underscore does not have any special meaning and can be used in simple examples where we do not want to use keywords, e.g. to indicate that `tuple_` is a tuple without using the `tuple` function. 
+
 ## Recursion
 
 _Recursion_ is the act of a function calling itself. One consequence of recursion is that you may end up in an infinite loop.
