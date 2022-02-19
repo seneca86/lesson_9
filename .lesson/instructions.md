@@ -244,7 +244,7 @@ run_with_args(add_up, 1, 2, 3)
 
 ### Definition
 
-Inner functions are functions defined within other functions, and the reationale for using them is the same as for using a regular function: to perform a repetitive, complex task.
+Inner functions are functions defined within other functions, and the rationale for using them is the same as for using a regular function: to perform a repetitive, complex task.
 
 ```python
 def reminder(*args):
