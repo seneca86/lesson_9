@@ -170,7 +170,7 @@ clothes_size(socks='M', hat='M')
 
 ### Keyword-only arguments
 
-Python let's you specify keyword-only arguments by placing a `*` after the positional arguments and before the obligatorily-named arguments.
+Python lets you specify keyword-only arguments by placing a `*` after the positional arguments and before the obligatorily-named arguments.
 
 ```python
 def naming(one, *, two):
