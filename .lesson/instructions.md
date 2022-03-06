@@ -230,7 +230,7 @@ def run_fun(fun_, x, y):
     fun_(x, y)
 run_fun(do_sum, 3, 5)
 ```
-An another example with positional arguments:
+And another example with positional arguments:
 
 ```python
 def add_up(*args):
